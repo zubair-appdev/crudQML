@@ -109,7 +109,10 @@ Window {
 
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: listView.currentIndex = index
+                            onClicked: {
+                                listView.currentIndex = index
+                                searchField.text = listView.model[index]
+                            }
                         }
                     }
                 }
@@ -135,11 +138,16 @@ Window {
                         width: employeeListView.width
                         height: 50
 
-                        color: "white"
+                        color: ListView.isCurrentItem ? "skyblue" : "white"
 
                         border.width: 1
                         border.color: "gray"
                         radius: 4
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: employeeListView.currentIndex = index
+                        }
 
                         RowLayout {
                             anchors.fill: parent
@@ -150,7 +158,7 @@ Window {
                                 Layout.fillHeight: true
                                 Layout.fillWidth: true
 
-                                color: "transparent"
+                                color: "#ff45aa"
 
                                 Text {
                                     anchors.centerIn: parent
@@ -162,7 +170,7 @@ Window {
                                 Layout.fillHeight: true
                                 Layout.fillWidth: true
 
-                                color: "transparent"
+                                color: "#df21bb"
 
                                 Text {
                                     anchors.centerIn: parent
@@ -174,7 +182,7 @@ Window {
                                 Layout.fillHeight: true
                                 Layout.fillWidth: true
 
-                                color: "transparent"
+                                color: "#cc2145"
 
                                 Text {
                                     anchors.centerIn: parent
