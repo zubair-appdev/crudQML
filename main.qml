@@ -6,7 +6,7 @@ import QtQuick.Layouts 1.3
 Window {
     visible: true
     width: 640
-    height: 480
+    height: 680
     minimumWidth: 400
     minimumHeight: 400
     title: qsTr("CRUD Application")
@@ -116,6 +116,75 @@ Window {
 
             }
 
+        }
+
+        //Another row layout
+        RowLayout{
+            Rectangle{
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+                ListView {
+                    id: employeeListView
+
+                    anchors.fill: parent
+
+                    model: sqlDataHandler.getSqlTable()
+
+                    delegate: Rectangle {
+                        width: employeeListView.width
+                        height: 50
+
+                        color: "white"
+
+                        border.width: 1
+                        border.color: "gray"
+                        radius: 4
+
+                        RowLayout {
+                            anchors.fill: parent
+                            anchors.margins: 2
+                            spacing: 0
+
+                            Rectangle {
+                                Layout.fillHeight: true
+                                Layout.fillWidth: true
+
+                                color: "transparent"
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: modelData.employee
+                                }
+                            }
+
+                            Rectangle {
+                                Layout.fillHeight: true
+                                Layout.fillWidth: true
+
+                                color: "transparent"
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: modelData.id
+                                }
+                            }
+
+                            Rectangle {
+                                Layout.fillHeight: true
+                                Layout.fillWidth: true
+
+                                color: "transparent"
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: modelData.age
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
     }
